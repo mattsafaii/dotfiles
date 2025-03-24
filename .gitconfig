@@ -6,7 +6,7 @@
 	tags = tag -l
 	branches = branch -a
 	remotes = remote -v
-	
+
 	# Pretty log output
 	hist = log --graph --pretty=format:'%Cred%h%Creset %s%C(yellow)%d%Creset %Cgreen(%cr)%Creset [%an]' --abbrev-commit --date=relative
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
@@ -15,7 +15,7 @@
 	stb = status -sb
 	cpr = "!f() { gh repo create $(basename \"$PWD\") --private --source=. --remote=origin && git add . && git commit -m \"Initial commit\" && git push -u origin main; }; f"
 [init]
-	defaultBranch = main
+	defaultBranch = master
 [core]
 	editor = subl -n -w
 	excludesfile = /Users/matt/.gitignore

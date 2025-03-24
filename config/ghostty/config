@@ -29,7 +29,7 @@ macos-icon-ghost-color = yellow
 macos-icon-screen-color = green
 
 # keybinds
-keybind = ctrl+a>q=toggle_quick_terminal
+keybind = global:cmd+alt+enter=toggle_quick_terminal
 
 
 # colors
@@ -42,5 +42,3 @@ selection-foreground = #CECDC3
 # cursor colors
 cursor-color = #CECDC3
 cursor-text = #100F0F
-
-TEST

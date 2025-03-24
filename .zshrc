@@ -4,7 +4,7 @@ ZSH_THEME="robbyrussell"
 CASE_SENSITIVE="true"
 ENABLE_CORRECTION="true"
 
-plugins=(git sudo web-search z)
+plugins=(git sudo z)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -18,7 +18,7 @@ alias gitconfig="git config --global --edit"
 alias ohmyzsh="mate ~/.oh-my-zsh"
 alias zs="source ~/.zshrc"
 alias kamal='docker run -it --rm -v "${PWD}:/workdir" -v "/run/host-services/ssh-auth.sock:/run/host-services/ssh-auth.sock" -e SSH_AUTH_SOCK="/run/host-services/ssh-auth.sock" -v /var/run/docker.sock:/var/run/docker.sock ghcr.io/basecamp/kamal:latest'
-
+alias c="clear"
 alias cdc="cd ~/Code/Clients"
 alias cdp="cd ~/Code/Personal"
 alias cds="cd ~/Code/Sandbox"
@@ -65,6 +65,14 @@ function g() {
     fi
 }
 
+# ----------------------
+# Rails Aliases
+# ----------------------
+alias rc='rails c'
+alias rdm='rake db:migrate'
+alias rdb='rake db:rollback'
+alias bi='bundle install'
+
 #------------------------
 # SSH Aliases
 #------------------------
@@ -92,4 +100,3 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 export PATH=$PATH:~/
-
