@@ -1,0 +1,46 @@
+# theme
+theme = GruvBoxDarkHard
+
+# font
+font-family = BerkeleyMono
+font-family-bold = BerkeleyMonoBold
+font-family-italic = BerkeleyMonoItalic
+font-family-bold-italic = BerkeleyMonoBoldItalic
+window-title-font-family = BerkeleyMono
+font-size = 16
+
+cursor-style = block
+adjust-cell-height = 35%
+window-padding-balance = true
+window-save-state = always
+
+# clipboard
+clipboard-read = allow
+clipboard-write = allow
+
+# macos
+mouse-hide-while-typing = true
+mouse-scroll-multiplier = 2
+
+# macos icon
+macos-icon = custom-style
+macos-icon-frame = beige
+macos-icon-ghost-color = yellow
+macos-icon-screen-color = green
+
+# keybinds
+keybind = ctrl+a>q=toggle_quick_terminal
+
+
+# colors
+# basic colors
+background = #100F0F
+foreground = #CECDC3
+selection-background = #403E3C
+selection-foreground = #CECDC3
+
+# cursor colors
+cursor-color = #CECDC3
+cursor-text = #100F0F
+
+TEST
