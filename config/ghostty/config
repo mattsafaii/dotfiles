@@ -1,12 +1,10 @@
 # theme
-theme = GruvBoxDarkHard
+theme = dark:Flexoki Dark,light:Flexoki Light
 
 # font
-font-family = BerkeleyMono
-font-family-bold = BerkeleyMonoBold
-font-family-italic = BerkeleyMonoItalic
-font-family-bold-italic = BerkeleyMonoBoldItalic
-window-title-font-family = BerkeleyMono
+font-family = "Berkeley Mono"
+font-family = "Symbols Nerd Font Mono"
+window-title-font-family = "Berkeley Mono"
 font-size = 16
 
 cursor-style = block
@@ -30,15 +28,13 @@ macos-icon-screen-color = green
 
 # keybinds
 keybind = global:cmd+alt+enter=toggle_quick_terminal
+keybind = shift+enter=text:\x1b\r
 
+#cmux
+scrollback-limit = 50000
 
-# colors
-# basic colors
-background = #100F0F
-foreground = #CECDC3
-selection-background = #403E3C
-selection-foreground = #CECDC3
+unfocused-split-opacity = 0.75
 
-# cursor colors
-cursor-color = #CECDC3
-cursor-text = #100F0F
+split-divider-color = #3e4451
+
+# working-directory = ~/Code

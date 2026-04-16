@@ -1,14 +1,13 @@
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="robbyrussell"
+ZSH_THEME=""
 CASE_SENSITIVE="true"
-ENABLE_CORRECTION="true"
 
 plugins=(git sudo z)
 
 source $ZSH/oh-my-zsh.sh
 
-export EDITOR='zed'
+export EDITOR='subl'
 
 # -------
 # Aliases
@@ -22,7 +21,7 @@ alias c="clear"
 alias cdc="cd ~/Code/Clients"
 alias cdp="cd ~/Code/Personal"
 alias cds="cd ~/Code/Sandbox"
-
+alias cdo="cd '/Users/matt/Library/Mobile Documents/iCloud~md~obsidian/Documents/Matt Safaii'"
 
 # ----------------------
 # Git Aliases
@@ -52,7 +51,7 @@ function g() {
     read -r commit_message
     git add .
     if [ -n "commit_message" ]; then
-        git commit -m "commit_message"
+        git commit -m "$commit_message"
         echo -e "$ARROW 🫸 Pushing"
         echo -e "$ARROW 🛡️ What's the secret word?"
         if git push; then
@@ -61,7 +60,7 @@ function g() {
             echo -e "$ERROR_ARROW ❌ Push failed"
         fi
     else
-        echo -e "ERROR_ARROW ❌ Commit aborted: empty commit message"
+        echo -e "$ERROR_ARROW ❌ Commit aborted: empty commit message"
     fi
 }
 
@@ -73,11 +72,11 @@ alias rdm='rake db:migrate'
 alias rdb='rake db:rollback'
 alias bi='bundle install'
 
-#------------------------
-# SSH Aliases
-#------------------------
-alias sshamn="ssh matt@5.78.128.71"
-
+# ----------------------
+# Basecamp CLI Aliases
+# ----------------------
+alias bcs='basecamp -a 6191443'   # Safaii Studio
+alias bcz='basecamp -a 6060605'   # Zonebrite Solutions
 
 # -------
 # NVM
@@ -100,3 +99,24 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 export PATH=$PATH:~/
+export PATH="/opt/homebrew/bin:$PATH"
+
+# hide all node.js warnings
+export NODE_NO_WARNINGS=1
+
+. "$HOME/.local/bin/env"
+
+export PATH=~/.npm-global/bin:$PATH
+
+#zoxide
+eval "$(zoxide init --cmd cd zsh)"
+
+#fzf
+source <(fzf --zsh)
+
+# Opt-out of telemtry for skills.sh
+export SKILLS_NO_TELEMETRY=1
+export LEDGER_FILE=~/Documents/Finances/main.journal
+
+# Starship prompt
+eval "$(starship init zsh)"
