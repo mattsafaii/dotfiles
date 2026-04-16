@@ -1,3 +1,4 @@
+tap "basecamp/tap"
 tap "oven-sh/bun"
 # Yet another cross-platform graphical process/system monitor
 brew "bottom"
@@ -79,6 +80,8 @@ brew "zsh-syntax-highlighting"
 brew "oven-sh/bun/bun"
 # All-In-One Toolkit for Working Remotely
 cask "basecamp"
+# Basecamp CLI
+cask "basecamp/tap/basecamp-cli"
 # Design tool
 cask "canva"
 # Disk space visualiser
