@@ -1,18 +1,24 @@
 #!/bin/bash
 DOTFILES_DIR=~/.dotfiles
 
-# Link .zshrc
-ln -sf $DOTFILES_DIR/.zshrc ~/.zshrc
+# Link everything in home/ to ~/
+for f in "$DOTFILES_DIR"/home/.*; do
+  [ -f "$f" ] && ln -sf "$f" ~/
+done
 
-# Link .gitconfig
-ln -sf $DOTFILES_DIR/.gitconfig ~/.gitconfig
-
-# Link starship config
+# Link everything in config/ to ~/.config/
 mkdir -p ~/.config
-ln -sf $DOTFILES_DIR/config/starship.toml ~/.config/starship.toml
+for f in "$DOTFILES_DIR"/config/*; do
+  ln -sf "$f" ~/.config/
+done
 
-# Link ghostty config
-mkdir -p ~/Library/Application\ Support/com.mitchellh.ghostty
-ln -sf $DOTFILES_DIR/config/ghostty/config ~/Library/Application\ Support/com.mitchellh.ghostty/config
+# Link everything in library/ to ~/Library/Application Support/
+for d in "$DOTFILES_DIR"/library/*/; do
+  app=$(basename "$d")
+  mkdir -p ~/Library/Application\ Support/"$app"
+  for f in "$d"*; do
+    ln -sf "$f" ~/Library/Application\ Support/"$app"/
+  done
+done
 
 echo "Dotfiles linked!"

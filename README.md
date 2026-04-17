@@ -2,13 +2,15 @@
 
 Personal dev environment config for macOS.
 
-## What's inside
+## Structure
 
-- `.zshrc` - Shell config, aliases, prompt (Starship)
-- `.gitconfig` - Git settings and aliases
-- `config/starship.toml` - Starship prompt config
-- `config/ghostty/` - Ghostty terminal config
-- `Brewfile` - Homebrew packages and casks
+```
+home/           → ~/          (.zshrc, .gitconfig)
+config/         → ~/.config/  (starship.toml)
+library/        → ~/Library/Application Support/  (ghostty)
+```
+
+Drop a file in the right folder and `setup.sh` symlinks it automatically.
 
 ## Setup
 
@@ -18,5 +20,3 @@ cd ~/.dotfiles
 bash setup.sh
 brew bundle
 ```
-
-`setup.sh` symlinks config files to their expected locations. `brew bundle` installs everything in the Brewfile.
