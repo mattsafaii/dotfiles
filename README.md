@@ -62,11 +62,18 @@ cd ~/.dotfiles && git add -A && git commit -m "description" && git push
 
 ### Git
 
-| Alias | What it does |
-|-------|--------------|
-| `gp "msg"` | Add all, commit with message, push |
-| `g` | Interactive: prompts for commit message, adds, commits, pushes |
-| `gut`, `got`, `gkt`, `gir`, `giy` | Typo-proof aliases for `git` |
+| Alias | Command |
+|-------|---------|
+| `gst` | `git status` |
+| `ga` | `git add` |
+| `ga.` | `git add .` |
+| `gc` | `git commit` |
+| `gcm` | `git commit -m` |
+| `gp` | `git push` |
+| `gl` | `git pull` |
+| `gco` | `git checkout` |
+| `gd` | `git diff` |
+| `glog` | Pretty log graph |
 
 ### Rails
 
@@ -113,6 +120,7 @@ cd ~/.dotfiles && git add -A && git commit -m "description" && git push
 
 | Function | What it does |
 |----------|--------------|
+| `g` | Interactive add, commit, push (prompts for message) |
 | `mkd mydir` | Create directory and cd into it |
 | `cdf` | cd to whatever folder Finder has open |
 | `extract file.tar.gz` | Extract any archive format (tar, zip, gz, bz2, dmg, rar) |
