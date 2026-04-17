@@ -1,0 +1,72 @@
+#!/bin/bash
+
+# Close System Settings to prevent overriding changes
+osascript -e 'tell application "System Settings" to quit'
+
+###############################################################################
+# General UI                                                                  #
+###############################################################################
+
+# Dark mode
+defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
+
+# Disable automatic spelling correction
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
+# Disable automatic capitalization
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+
+# Disable auto-period with double space
+defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+
+# Disable smart dashes
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
+
+# Disable smart quotes
+defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+
+###############################################################################
+# Dock                                                                        #
+###############################################################################
+
+# Set icon size
+defaults write com.apple.dock tilesize -int 34
+
+# Keep Dock at bottom
+defaults write com.apple.dock orientation -string "bottom"
+
+# Don't auto-hide the Dock
+defaults write com.apple.dock autohide -bool false
+
+# Don't show recent apps in Dock
+defaults write com.apple.dock show-recents -bool false
+
+###############################################################################
+# Finder                                                                      #
+###############################################################################
+
+# Show path bar
+defaults write com.apple.finder ShowPathbar -bool true
+
+# Show status bar
+defaults write com.apple.finder ShowStatusBar -bool true
+
+# Default to list view
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
+# Search the current folder by default
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
+# New windows open home folder
+defaults write com.apple.finder NewWindowTarget -string "PfHm"
+defaults write com.apple.finder NewWindowTargetPath -string "file:///Users/matt/"
+
+###############################################################################
+# Restart affected apps                                                       #
+###############################################################################
+
+for app in "Dock" "Finder"; do
+  killall "$app" &> /dev/null
+done
+
+echo "macOS preferences set. Some changes may require a logout or restart."

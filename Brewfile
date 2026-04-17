@@ -26,6 +26,7 @@ brew "hledger"
 brew "libheif"
 brew "imagemagick"
 brew "jq"
+brew "mackup"
 brew "libyaml"
 brew "python@3.13"
 brew "utf8proc", args: ["HEAD"]

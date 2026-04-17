@@ -19,4 +19,11 @@ git clone git@github.com:mattsafaii/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 bash setup.sh
 brew bundle
+bash .macos
+mackup restore
 ```
+
+- `setup.sh` — symlinks config files to their expected locations
+- `brew bundle` — installs everything in the Brewfile
+- `.macos` — sets macOS system preferences (Dock, Finder, keyboard, etc.)
+- `mackup restore` — restores app settings from iCloud
