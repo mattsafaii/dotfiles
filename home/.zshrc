@@ -9,6 +9,17 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR='subl'
 
+# ----------------------
+# History
+# ----------------------
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt INC_APPEND_HISTORY
+setopt EXTENDED_HISTORY
+
 # -------
 # Aliases
 # -------
