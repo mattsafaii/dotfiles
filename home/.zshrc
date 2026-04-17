@@ -9,6 +9,13 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR='subl'
 
+# Prevent duplicate PATH entries on shell reload
+add_to_path() {
+  if [[ -d "$1" ]] && [[ ":$PATH:" != *":$1:"* ]]; then
+    export PATH="$1:$PATH"
+  fi
+}
+
 # ----------------------
 # History
 # ----------------------
@@ -164,7 +171,7 @@ export NVM_DIR="$HOME/.nvm"
 # -------
 # Ruby
 # -------
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+add_to_path "/opt/homebrew/opt/ruby/bin"
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # bun completions
@@ -172,17 +179,17 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+add_to_path "$BUN_INSTALL/bin"
 
-export PATH=$PATH:~/
-export PATH="/opt/homebrew/bin:$PATH"
+add_to_path "$HOME"
+add_to_path "/opt/homebrew/bin"
 
 # hide all node.js warnings
 export NODE_NO_WARNINGS=1
 
 . "$HOME/.local/bin/env"
 
-export PATH=~/.npm-global/bin:$PATH
+add_to_path "$HOME/.npm-global/bin"
 
 #zoxide
 eval "$(zoxide init --cmd cd zsh)"
