@@ -12,7 +12,7 @@ mkdir -p ~/.config
 ln -sf $DOTFILES_DIR/config/starship.toml ~/.config/starship.toml
 
 # Link ghostty config
-mkdir -p ~/.config/ghostty
-ln -sf $DOTFILES_DIR/config/ghostty/config ~/.config/ghostty/config
+mkdir -p ~/Library/Application\ Support/com.mitchellh.ghostty
+ln -sf $DOTFILES_DIR/config/ghostty/config ~/Library/Application\ Support/com.mitchellh.ghostty/config
 
 echo "Dotfiles linked!"
