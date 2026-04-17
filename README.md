@@ -106,6 +106,7 @@ cd ~/.dotfiles && git add -A && git commit -m "description" && git push
 |-------|--------------|
 | `afk` | Lock screen |
 | `path` | Print each PATH entry on its own line |
+| `pubkey` | Copy SSH public key to clipboard |
 | `zs` | Reload `.zshrc` |
 
 ## Shell Functions
@@ -114,6 +115,7 @@ cd ~/.dotfiles && git add -A && git commit -m "description" && git push
 |----------|--------------|
 | `mkd mydir` | Create directory and cd into it |
 | `cdf` | cd to whatever folder Finder has open |
+| `extract file.tar.gz` | Extract any archive format (tar, zip, gz, bz2, dmg, rar) |
 
 ## What's Where
 
@@ -124,10 +126,13 @@ cd ~/.dotfiles && git add -A && git commit -m "description" && git push
 | `home/.gemrc` | Skip gem docs on install |
 | `home/.railsrc` | `rails new` defaults: sqlite3, skip-test |
 | `home/.editorconfig` | Editor formatting (tabs, UTF-8, trailing whitespace) |
+| `home/.gitignore_global` | Global gitignore (.DS_Store, *.swp, etc.) |
 | `home/.hushlogin` | Suppress "Last login" terminal message |
+| `home/.irbrc` | Ruby IRB config (history, auto-indent, `cop` to copy last result) |
 | `config/starship.toml` | Starship prompt config |
 | `library/com.mitchellh.ghostty/config` | Ghostty terminal config |
 | `.macos` | macOS system preferences script |
+| `macos/set-hostname.sh` | Fix hostname if macOS appended random numbers |
 | `Brewfile` | Homebrew packages and casks |
 | `setup.sh` | Symlink installer |
 

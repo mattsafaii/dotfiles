@@ -1,0 +1,10 @@
+.DS_Store
+._*
+*.swp
+*~
+
+# OS junk
+Desktop.ini
+Thumbs.db
+.Spotlight-V100
+.Trashes
