@@ -1,0 +1,96 @@
+# Starship config — Safaii Studio / Zonebrite
+# Place at ~/.config/starship.toml
+
+# Minimal format: only what matters
+format = """
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$ruby\
+$bun\
+$nodejs\
+$docker_context\
+$cmd_duration\
+$line_break\
+$character"""
+
+# Blank line between prompts for readability
+add_newline = true
+
+[character]
+success_symbol = "[❯](bold white)"
+error_symbol = "[❯](bold red)"
+
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+style = "bold cyan"
+
+[git_branch]
+symbol = ""
+format = "[$symbol$branch(:$remote_branch)]($style) "
+style = "bold purple"
+
+[git_status]
+format = '([$all_status$ahead_behind]($style) )'
+style = "bold red"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+
+[ruby]
+symbol = ""
+format = "[$symbol($version)]($style) "
+style = "bold red"
+detect_files = ["Gemfile", ".ruby-version", "Rakefile"]
+
+[bun]
+format = "[$symbol($version)]($style) "
+symbol = "🥟 "
+style = "bold white"
+
+[nodejs]
+symbol = ""
+format = "[$symbol($version)]($style) "
+style = "bold green"
+detect_files = ["package.json", ".node-version", ".nvmrc"]
+# Won't show in Rails projects — only 11ty/JS dirs
+
+[docker_context]
+symbol = ""
+format = "[$symbol$context]($style) "
+style = "bold blue"
+# Only shows when context isn't "default" — perfect for Kamal
+
+[cmd_duration]
+min_time = 2_000
+format = "[$duration]($style) "
+style = "bold yellow"
+show_notifications = false
+# Shows when commands take >2s (deploys, test suites, builds)
+
+# Kill noisy/slow modules
+[package]
+disabled = true
+
+[python]
+disabled = true
+
+[golang]
+disabled = true
+
+[java]
+disabled = true
+
+[dotnet]
+disabled = true
+
+[php]
+disabled = true
+
+[aws]
+disabled = true
+
+[gcloud]
+disabled = true

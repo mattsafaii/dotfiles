@@ -6,6 +6,7 @@ Personal dev environment config for macOS.
 
 - `.zshrc` - Shell config, aliases, prompt (Starship)
 - `.gitconfig` - Git settings and aliases
+- `config/starship.toml` - Starship prompt config
 - `config/ghostty/` - Ghostty terminal config
 - `Brewfile` - Homebrew packages and casks
 
