@@ -18,10 +18,35 @@ alias ohmyzsh="mate ~/.oh-my-zsh"
 alias zs="source ~/.zshrc"
 alias kamal='docker run -it --rm -v "${PWD}:/workdir" -v "/run/host-services/ssh-auth.sock:/run/host-services/ssh-auth.sock" -e SSH_AUTH_SOCK="/run/host-services/ssh-auth.sock" -v /var/run/docker.sock:/var/run/docker.sock ghcr.io/basecamp/kamal:latest'
 alias c="clear"
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
 alias cdc="cd ~/Code/Clients"
 alias cdp="cd ~/Code/Personal"
 alias cds="cd ~/Code/Sandbox"
 alias cdo="cd '/Users/matt/Library/Mobile Documents/iCloud~md~obsidian/Documents/Matt Safaii'"
+
+# ----------------------
+# Network
+# ----------------------
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en0"
+alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
+
+# ----------------------
+# Finder
+# ----------------------
+alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+
+# ----------------------
+# Misc
+# ----------------------
+alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+alias path='echo -e ${PATH//:/\\n}'
 
 # ----------------------
 # Git Aliases
@@ -63,6 +88,15 @@ function g() {
         echo -e "$ERROR_ARROW ❌ Commit aborted: empty commit message"
     fi
 }
+
+# ----------------------
+# Functions
+# ----------------------
+# Create directory and cd into it
+mkd() { mkdir -p "$@" && cd "$_"; }
+
+# cd to whatever Finder has open
+cdf() { cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')"; }
 
 # ----------------------
 # Rails Aliases
