@@ -5,25 +5,154 @@ Personal dev environment config for macOS.
 ## Structure
 
 ```
-home/           → ~/          (.zshrc, .gitconfig)
+home/           → ~/          (.zshrc, .gitconfig, .gemrc, .railsrc, .editorconfig)
 config/         → ~/.config/  (starship.toml)
 library/        → ~/Library/Application Support/  (ghostty)
 ```
 
 Drop a file in the right folder and `setup.sh` symlinks it automatically.
 
-## Setup
+## Fresh Mac Setup
 
 ```sh
+# 1. Clone
 git clone git@github.com:mattsafaii/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
+
+# 2. Symlink configs
 bash setup.sh
+
+# 3. Install packages
 brew bundle
+
+# 4. Set macOS preferences
 bash .macos
+
+# 5. Restore app settings from iCloud
 mackup restore
 ```
 
-- `setup.sh` — symlinks config files to their expected locations
-- `brew bundle` — installs everything in the Brewfile
-- `.macos` — sets macOS system preferences (Dock, Finder, keyboard, etc.)
-- `mackup restore` — restores app settings from iCloud
+## Updating
+
+```sh
+# After installing/removing a Homebrew package
+brew bundle dump --file=~/.dotfiles/Brewfile --force
+
+# After changing app settings
+mackup backup --force
+
+# After any change
+cd ~/.dotfiles && git add -A && git commit -m "description" && git push
+```
+
+## Shell Aliases
+
+### Navigation
+
+| Alias | Command |
+|-------|---------|
+| `..` | `cd ..` |
+| `...` | `cd ../..` |
+| `....` | `cd ../../..` |
+| `cdc` | `cd ~/Code/Clients` |
+| `cdp` | `cd ~/Code/Personal` |
+| `cds` | `cd ~/Code/Sandbox` |
+| `cdo` | `cd` to Obsidian vault |
+| `c` | `clear` |
+
+### Git
+
+| Alias | What it does |
+|-------|--------------|
+| `gp "msg"` | Add all, commit with message, push |
+| `g` | Interactive: prompts for commit message, adds, commits, pushes |
+| `gut`, `got`, `gkt`, `gir`, `giy` | Typo-proof aliases for `git` |
+
+### Rails
+
+| Alias | Command |
+|-------|---------|
+| `rc` | `rails c` |
+| `rdm` | `rake db:migrate` |
+| `rdb` | `rake db:rollback` |
+| `bi` | `bundle install` |
+
+### Basecamp CLI
+
+| Alias | Account |
+|-------|---------|
+| `bcs` | Safaii Studio (6191443) |
+| `bcz` | Zonebrite Solutions (6060605) |
+
+### Network
+
+| Alias | What it does |
+|-------|--------------|
+| `ip` | Show public IP |
+| `localip` | Show local IP |
+| `flush` | Flush DNS cache |
+
+### Finder
+
+| Alias | What it does |
+|-------|--------------|
+| `show` / `hide` | Toggle hidden files in Finder |
+| `hidedesktop` / `showdesktop` | Toggle desktop icons (for presentations) |
+| `cleanup` | Recursively delete `.DS_Store` files |
+
+### Misc
+
+| Alias | What it does |
+|-------|--------------|
+| `afk` | Lock screen |
+| `path` | Print each PATH entry on its own line |
+| `zs` | Reload `.zshrc` |
+
+## Shell Functions
+
+| Function | What it does |
+|----------|--------------|
+| `mkd mydir` | Create directory and cd into it |
+| `cdf` | cd to whatever folder Finder has open |
+
+## What's Where
+
+| File | Purpose |
+|------|---------|
+| `home/.zshrc` | Shell config, aliases, PATH |
+| `home/.gitconfig` | Git settings and aliases |
+| `home/.gemrc` | Skip gem docs on install |
+| `home/.railsrc` | `rails new` defaults: sqlite3, skip-test |
+| `home/.editorconfig` | Editor formatting (tabs, UTF-8, trailing whitespace) |
+| `home/.hushlogin` | Suppress "Last login" terminal message |
+| `config/starship.toml` | Starship prompt config |
+| `library/com.mitchellh.ghostty/config` | Ghostty terminal config |
+| `.macos` | macOS system preferences script |
+| `Brewfile` | Homebrew packages and casks |
+| `setup.sh` | Symlink installer |
+
+## macOS Preferences (.macos)
+
+The `.macos` script sets these preferences. Run `bash .macos` to apply.
+
+- Dark mode
+- Disable autocorrect, smart quotes, smart dashes, auto-capitalization
+- Expand save/print dialogs by default
+- Save to disk (not iCloud) by default
+- Fast key repeat, disable press-and-hold
+- Dock: 34px icons, bottom, no recents
+- Finder: list view, path bar, status bar, search current folder, folders on top
+- No `.DS_Store` on network/USB volumes
+- Screenshots without shadows
+- Password required immediately after sleep
+- TextEdit defaults to plain text
+- Photos won't auto-open when plugging in devices
+- Time Machine won't prompt for new backup drives
+
+## Mackup
+
+Mackup backs up app settings to iCloud. Config at `~/.mackup.cfg`.
+
+Managed by Mackup (app preferences): Sublime Text, iTerm2, Zed, Spotify, Zoom, etc.
+
+Managed by dotfiles (shell/dev config): zsh, git, starship, btop, fish, ghostty, Claude Code.
