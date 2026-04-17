@@ -54,6 +54,13 @@ alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && k
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 
 # ----------------------
+# Safety
+# ----------------------
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias rm="rm -iv"
+
+# ----------------------
 # Misc
 # ----------------------
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
