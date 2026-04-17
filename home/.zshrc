@@ -5,11 +5,8 @@
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME=""
 CASE_SENSITIVE="true"
-plugins=(git sudo z)
+plugins=(sudo z)
 source $ZSH/oh-my-zsh.sh
-
-# Unalias git plugin shortcuts we override with our own functions
-unalias g gap 2>/dev/null
 
 # ==============================================================================
 # Helpers
@@ -73,12 +70,16 @@ alias cdo="cd '$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/Matt 
 # Aliases — Git
 # ==============================================================================
 
-alias gut='git'
-alias got='git'
-alias gkt='git'
-alias gir='git'
-alias giy='git'
-alias cpr="~/create-repo.sh"
+alias gst='git status'
+alias ga='git add'
+alias ga.='git add .'
+alias gc='git commit'
+alias gcm='git commit -m'
+alias gp='git push'
+alias gl='git pull'
+alias gco='git checkout'
+alias gd='git diff'
+alias glog='git log --oneline --decorate --graph'
 
 # ==============================================================================
 # Aliases — Rails
