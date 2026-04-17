@@ -139,12 +139,18 @@ The `.macos` script sets these preferences. Run `bash .macos` to apply.
 - Disable autocorrect, smart quotes, smart dashes, auto-capitalization
 - Expand save/print dialogs by default
 - Save to disk (not iCloud) by default
+- Auto-quit printer app when done
 - Fast key repeat, disable press-and-hold
-- Dock: 34px icons, bottom, no recents
-- Finder: list view, path bar, status bar, search current folder, folders on top
+- Disable focus ring animation, faster window resize
+- Full keyboard access (Tab works in modal dialogs)
+- Spring loading with zero delay
+- Dock: 34px icons, bottom, no recents, don't rearrange Spaces, fast Mission Control
+- Finder: list view, path bar, status bar, no animations, search current folder, folders on top, ~/Library visible
 - No `.DS_Store` on network/USB volumes
 - Screenshots without shadows
 - Password required immediately after sleep
+- Activity Monitor: CPU graph in Dock icon, show all processes, sort by CPU
+- Messages: no emoji substitution, no smart quotes, no spell check
 - TextEdit defaults to plain text
 - Photos won't auto-open when plugging in devices
 - Time Machine won't prompt for new backup drives

@@ -3,6 +3,12 @@
 # Close System Settings to prevent overriding changes
 osascript -e 'tell application "System Settings" to quit'
 
+# Ask for the administrator password upfront
+sudo -v
+
+# Keep sudo alive until this script finishes
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
 ###############################################################################
 # General UI                                                                  #
 ###############################################################################
@@ -36,6 +42,9 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 # Save to disk, not iCloud
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
+# Auto-quit printer app when print jobs complete
+defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+
 # Disable press-and-hold for key repeat
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
@@ -45,6 +54,21 @@ defaults write NSGlobalDomain InitialKeyRepeat -int 10
 
 # Show all filename extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+# Disable the focus ring animation
+defaults write NSGlobalDomain NSUseAnimatedFocusRing -bool false
+
+# Faster window resize animation for Cocoa apps
+defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
+
+# Enable full keyboard access for all controls (Tab in modal dialogs)
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+# Enable spring loading for directories
+defaults write NSGlobalDomain com.apple.springing.enabled -bool true
+
+# Zero delay for spring loading
+defaults write NSGlobalDomain com.apple.springing.delay -float 0
 
 ###############################################################################
 # Dock                                                                        #
@@ -62,9 +86,18 @@ defaults write com.apple.dock autohide -bool false
 # Don't show recent apps in Dock
 defaults write com.apple.dock show-recents -bool false
 
+# Don't automatically rearrange Spaces based on most recent use
+defaults write com.apple.dock mru-spaces -bool false
+
+# Speed up Mission Control animations
+defaults write com.apple.dock expose-animation-duration -float 0.1
+
 ###############################################################################
 # Finder                                                                      #
 ###############################################################################
+
+# Disable Finder animations
+defaults write com.apple.finder DisableAllAnimations -bool true
 
 # Show path bar
 defaults write com.apple.finder ShowPathbar -bool true
@@ -92,6 +125,9 @@ defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
+# Show the ~/Library folder
+chflags nohidden ~/Library 2>/dev/null
+
 ###############################################################################
 # Screenshots                                                                 #
 ###############################################################################
@@ -106,6 +142,33 @@ defaults write com.apple.screencapture disable-shadow -bool true
 # Require password immediately after sleep
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
+
+###############################################################################
+# Activity Monitor                                                            #
+###############################################################################
+
+# Show CPU usage in the Dock icon
+defaults write com.apple.ActivityMonitor IconType -int 5
+
+# Show all processes
+defaults write com.apple.ActivityMonitor ShowCategory -int 0
+
+# Sort by CPU usage
+defaults write com.apple.ActivityMonitor SortColumn -string "CPUUsage"
+defaults write com.apple.ActivityMonitor SortDirection -int 0
+
+###############################################################################
+# Messages                                                                    #
+###############################################################################
+
+# Disable automatic emoji substitution
+defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false
+
+# Disable smart quotes in Messages
+defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticQuoteSubstitutionEnabled" -bool false
+
+# Disable continuous spell checking in Messages
+defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "continuousSpellCheckingEnabled" -bool false
 
 ###############################################################################
 # Apps                                                                        #
@@ -126,7 +189,7 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 # Restart affected apps                                                       #
 ###############################################################################
 
-for app in "Dock" "Finder"; do
+for app in "Activity Monitor" "Dock" "Finder" "Messages" "SystemUIServer"; do
   killall "$app" &> /dev/null
 done
 
