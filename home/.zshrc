@@ -211,6 +211,7 @@ export NVM_DIR="$HOME/.nvm"
 . "$HOME/.local/bin/env"
 
 # Zoxide
+export _ZO_DOCTOR=0
 eval "$(zoxide init --cmd cd zsh)"
 
 # fzf
